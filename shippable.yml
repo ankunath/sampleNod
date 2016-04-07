@@ -3,20 +3,20 @@ language: node_js
 # Version number
 node_js:
   - 0.10
-  - 0.12
-  - 4.2.3
-  - iojs-v1
-  - iojs-v2
-  - iojs-v3
-  - 5.0
+  
 env:
   global:
-    - FOO=FUBU
-    - secure: jM0GiH8n6aB3YDNbQjRTAc/5AqLL190wk65H20hB7E6qv9VwsaUMoUVMBDPtZkshR8BGqrhWO5UU+0Ez/n0Ov4iRfk9FkrHYzXBA649l+MaZhaqQnm6wPoAt17m9Kk+QQcYgAZbj/TAItmUHdX7tvrGK1AUxZEAi5Jfap9F2URjq+YTKaOneLAlMz9LwFvfeST1U6q2osyWXqvbldYY1aD4/rPMa6kIVTpMJLRfXibMIjlHThVd0cUxZsve7fhZkc+KDXe0TaluRNCWijrl3bYIL/2CsQKl7vSmEJOKlxrKa42c24h0/j60RrdiciObispbBR/lhcJOGO5cYTeqElg==
-  #  
+     - SHIPPABLE_POSTGRES_CMD="sudo -u postgres $SHIPPABLE_POSTGRES_BINARY -c \"config_file=/etc/postgresql/$SHIPPABLE_POSTGRES_VERSION/main/postgresql.conf\" -c \"fsync=off\" -c \"synchronous_commit=off\""
+
+addons:
+  postgresql: '9.3'
+
+services:
+   - postgres
 
 build:
   ci:
     - node --version
+    - echo SHIPPABLE_POSTGRES_CMD 
     
   

@@ -1,0 +1,3 @@
+[submodule "sampleClo"]
+	path = sampleClo
+	url = https://github.com/hitchcock-org/sampleClo.git

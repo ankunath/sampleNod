@@ -1,30 +1,12 @@
 language: node_js
-services:
-  - mysql
-  - postgres
-  - redis
-  - memcache
-  - elasticsearch
-  - mongodb
-  - rabbitmq
-  - neo4j
-  - couchdb
-  - rethinkdb
+
 # Version number
 node_js:
   - 0.10
-  - 0.12
-  - 5.0
+ 
 
 
 build:
   ci:
     - node --version
-  cache: true
-  cache_dir_list:
-    - $SHIPPABLE_BUILD_DIR/shippable.yml
-    
-  pre_ci_boot:
-    image_name: drydock/u14nodall
-    image_tag: prod
-    pull: true  
+  

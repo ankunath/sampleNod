@@ -1,25 +1,17 @@
 language: node_js
 
+services: 
+  - postgres
 
 # Version number
 node_js:
   - 0.10
   
-env:
-  global:
-    - SHIPPABLE_POSTGRES_VERSION="9.4"        
-    - SHIPPABLE_POSTGRES_BINARY="/usr/lib/postgresql/$SHIPPABLE_POSTGRES_VERSION/bin/postgres"    
-    - SHIPPABLE_POSTGRES_CMD="sudo -u postgres $SHIPPABLE_POSTGRES_BINARY -c \"config_file=/etc/postgresql/$SHIPPABLE_POSTGRES_VERSION/main/postgresql.conf\" -c \"fsync=off\" -c \"synchronous_commit=off\""
-
-addons:
-  - selenium: "2.44"
-  - firefox: "27.0"
-
-services:
-   - postgres
-   - selenium
-
 build:
   ci:
     - node --version
-    - echo SHIPPABLE_POSTGRES_CMD 
+    
+  pre_ci_boot:
+    image_name: drydock/u14nodall
+    image_tag: prod
+    pull: true  
